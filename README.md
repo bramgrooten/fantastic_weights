@@ -23,21 +23,19 @@
 Create a conda environment according to `environment.yml`:
 ```
 conda env create -f environment.yml
+conda activate fantastic_weights
 ```
 
-In addition, please install [W&B](https://wandb.ai/site) within the environment:
-```
-conda activate sparse
-conda install wandb -c conda-forge   # or pip install wandb
-```
-If you are planning to use the logging to W&B, set the W&B environment variables:
-
+If you are planning to use the logging to [W&B](https://wandb.ai/site), 
+set the W&B environment variables:
 ```
 export WANDB_ENTITY_NAME=<your_entity_name>
 export WANDB_PROJECT_NAME=<your_project_name>
 export WANDB_API_KEY=<your_API_key>
 ```
-Please make sure that pytorch with cuda is correctly installed. The pytorch and cudatoolkit versions in the environment specification file are the ones used in our experiments. If such configuration is not available on your system, use the latest versions of the packages.  
+Please make sure that pytorch with cuda is correctly installed. 
+The pytorch and cudatoolkit versions in the environment specification file are the ones used in our experiments. 
+If such configuration is not available on your system, use the latest versions of the packages.  
 
 Activate the created  environment and run:
 ```
