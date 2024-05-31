@@ -37,12 +37,13 @@ Please make sure that pytorch with cuda is correctly installed.
 The pytorch and cudatoolkit versions in the environment specification file are the ones used in our experiments. 
 If such configuration is not available on your system, use the latest versions of the packages.  
 
-Activate the created  environment and run:
+Activate the created environment and run:
 ```
 export CIFAR10_PYTORCH="./data"
 python main.py --use_wandb false --data cifar10 --model conv_cifar10
 ```
-to train a simple (baseline) MLP model on CIFAR10. See `main.py --help`  for more command line options. 
+to train a simple (baseline) MLP model on CIFAR10. (Add `--no_cuda true` on a Mac.) 
+See `main.py --help` for more command line options. 
 The datasets are expected to be found under the following names:
 - `CIFAR10_PYTORCH` - CIFAR10
 - `TABULAR_DATA_DIR` - Higgs dataset

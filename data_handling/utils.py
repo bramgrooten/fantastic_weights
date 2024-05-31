@@ -71,6 +71,11 @@ def get_cifar100_dataloaders(args, validation_split=0.0, max_threads=10, worker_
 
     return train_loader, test_loader, test_loader
 
+
+def pad_and_squeeze(x):
+    return F.pad(x.unsqueeze(0), (4, 4, 4, 4), mode='reflect').squeeze()
+
+
 def get_cifar10_dataloaders(args, validation_split=0.0, max_threads=10, transform=True, worker_init_fn=None):
     """Creates augmented train, validation, and test data loaders."""
 
@@ -79,9 +84,8 @@ def get_cifar10_dataloaders(args, validation_split=0.0, max_threads=10, transfor
 
     if transform:
         train_transform = transforms.Compose([
-                transforms.ToTensor(),
-                transforms.Lambda(lambda x: F.pad(x.unsqueeze(0),
-                                                        (4,4,4,4),mode='reflect').squeeze()),
+            transforms.ToTensor(),
+            transforms.Lambda(pad_and_squeeze),
             transforms.ToPILImage(),
             transforms.RandomCrop(32),
             transforms.RandomHorizontalFlip(),
